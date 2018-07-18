@@ -17,7 +17,7 @@
 
 $(call inherit-product, device/xiaomi/hydrogen/full_hydrogen.mk)
 
-# Inherit some common Lineage stuff.
+# Inherit some common rr stuff.
 $(call inherit-product, vendor/rr/config/common_full_phone.mk)
 
 # Set those variables here to overwrite the inherited values.
