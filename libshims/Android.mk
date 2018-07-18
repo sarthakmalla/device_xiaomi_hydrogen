@@ -1,5 +1,3 @@
-#!/bin/bash
-#
 # Copyright (C) 2016 The CyanogenMod Project
 # Copyright (C) 2017 The LineageOS Project
 #
@@ -14,15 +12,23 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-#
 
-set -e
+LOCAL_PATH := $(call my-dir)
 
-# Required!
-export DEVICE=hydrogen
-export DEVICE_COMMON=msm8956-common
-export VENDOR=xiaomi
+include $(CLEAR_VARS)
+LOCAL_SRC_FILES := media/libstagefright/foundation/MediaBuffer.cpp
+LOCAL_SHARED_LIBRARIES := libstagefright_foundation libui libgui
+LOCAL_CFLAGS := -Wno-unused-private-field
+LOCAL_MODULE := libshims_ims
+LOCAL_MODULE_TAGS := optional
+include $(BUILD_SHARED_LIBRARY)
 
-export DEVICE_BRINGUP_YEAR=2017
-
-./../../$VENDOR/$DEVICE_COMMON/extract-files.sh $@
+include $(CLEAR_VARS)
+LOCAL_SRC_FILES := \
+    bionic/bionic_time_conversions.cpp \
+    bionic/pthread_cond.cpp
+LOCAL_SHARED_LIBRARIES := libc
+LOCAL_MODULE := libshims_camera
+LOCAL_MODULE_TAGS := optional
+LOCAL_32_BIT_ONLY := true
+include $(BUILD_SHARED_LIBRARY)

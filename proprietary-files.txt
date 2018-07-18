@@ -360,9 +360,9 @@ vendor/lib/libqmiservices.so
 vendor/lib/libsmemlog.so
 
 # Radio
--app/embms/embms.apk
--app/fastdormancy/fastdormancy.apk
--app/shutdownlistener/shutdownlistener.apk
+-app/embms/embms.apk:app/embms/embms.apk:PRESIGNED
+-app/fastdormancy/fastdormancy.apk:app/fastdormancy/fastdormancy.apk:PRESIGNED
+-app/shutdownlistener/shutdownlistener.apk:app/shutdownlistener/shutdownlistener.apk:PRESIGNED
 bin/mmbn-daemon
 bin/netmgrd
 bin/qmuxd
@@ -374,9 +374,9 @@ etc/permissions/qcnvitems.xml
 etc/permissions/qcrilhook.xml
 etc/modem/Diag.cfg
 framework/embmslibrary.jar
--framework/qcnvitems.jar
--framework/qcrilhook.jar
--priv-app/qcrilmsgtunnel/qcrilmsgtunnel.apk
+-framework/qcnvitems.jar:framework/qcnvitems.jar:PRESIGNED
+-framework/qcrilhook.jar:framework/qcrilhook.jar:PRESIGNED
+-priv-app/qcrilmsgtunnel/qcrilmsgtunnel.apk:priv-app/qcrilmsgtunnel/qcrilmsgtunnel.apk:PRESIGNED
 vendor/lib64/libconfigdb.so
 vendor/lib64/liblqe.so
 vendor/lib64/libmdmdetect.so
@@ -387,7 +387,7 @@ vendor/lib64/libril-qc-qmi-1.so
 vendor/lib64/libril-qc-radioconfig.so
 vendor/lib64/libril-qcril-hook-oem.so
 vendor/lib64/librilqmiservices.so
-vendor/lib64/libsettings.so
+vendor/lib64/libsettings.so|4609cacca0a56dae2596687c8f5f2f9423d4d0d9
 vendor/lib64/libsystem_health_mon.so
 vendor/lib/liblqe.so
 vendor/lib/libmdmdetect.so
@@ -395,7 +395,7 @@ vendor/lib/libqcmaputils.so
 vendor/qcril.db
 
 # Time services
--app/TimeService/TimeService.apk
+-app/TimeService/TimeService.apk:app/TimeService/TimeService.apk:PRESIGNED
 bin/time_daemon
 vendor/lib64/libTimeService.so
 -vendor/lib64/libtime_genoff.so
@@ -404,3 +404,15 @@ vendor/lib/libTimeService.so
 
 # WiFi
 bin/wcnss_service
+
+# Thermal
+etc/thermal-engine-8956.conf
+etc/thermal-engine-8976.conf
+vendor/etc/perf-profile0.conf
+vendor/etc/perf-profile1.conf
+vendor/etc/perf-profile2.conf
+vendor/etc/perf-profile3.conf
+vendor/etc/perf-profile4.conf
+vendor/etc/perf-profile5.conf
+vendor/etc/perf-profile6.conf
+

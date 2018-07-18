@@ -1,5 +1,6 @@
 #
 # Copyright (C) 2016 The CyanogenMod Project
+# Copyright (C) 2017 The LineageOS Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -21,12 +22,6 @@ DEVICE_PATH := device/xiaomi/hydrogen
 # Assertions
 TARGET_OTA_ASSERT_DEVICE := hydrogen
 
-# Shims
-TARGET_LD_SHIM_LIBS := \
-    /system/vendor/lib64/lib-imsvt.so|libshims_ims.so \
-    /system/vendor/lib64/libizat_core.so|libshims_get_process_name.so \
-    /system/vendor/lib64/libril-qc-qmi-1.so|rild_socket.so
-
 # Bluetooth
 BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := $(DEVICE_PATH)/bluetooth
 
@@ -37,18 +32,18 @@ BOARD_USERDATAIMAGE_PARTITION_SIZE := 26705099776 # 26705116160 - 16384
 # Kernel
 TARGET_KERNEL_CONFIG := lineageos_hydrogen_defconfig
 
-WITH_AICP_CHARGER := false
-WITH_LINEAGE_CHARGER := false
-BOARD_USES_CYANOGEN_HARDWARE := true
-
 # Properties
 TARGET_SYSTEM_PROP += $(DEVICE_PATH)/system.prop
 
-# Sepolicy
-#BOARD_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy
+TARGET_BOARD_PLATFORM := msm8952
+TARGET_DEVICE := hydrogen
 
-# Tap-to-Wake
-TARGET_TAP_TO_WAKE_NODE := "/proc/touchpanel/double_tap_enable"
+# Shims
+TARGET_LD_SHIM_LIBS += \
+	/system/vendor/lib64/lib-imsvt.so|libshims_ims.so:/system/vendor/lib64/libril-qc-qmi-1.so|rild_socket.so
+
+# Sepolicy
+BOARD_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy
 
 # inherit from the proprietary version
 -include vendor/xiaomi/hydrogen/BoardConfigVendor.mk

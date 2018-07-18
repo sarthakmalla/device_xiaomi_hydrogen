@@ -17,13 +17,21 @@
 
 $(call inherit-product, device/xiaomi/hydrogen/full_hydrogen.mk)
 
-# Inherit some common rr stuff.
+# Inherit some common Lineage stuff.
 $(call inherit-product, vendor/rr/config/common_full_phone.mk)
 
-PRODUCT_NAME := rr_hydrogen
+# Set those variables here to overwrite the inherited values.
 BOARD_VENDOR := Xiaomi
+PRODUCT_BRAND := Xiaomi
+PRODUCT_DEVICE := hydrogen
+PRODUCT_NAME := rr_hydrogen
+PRODUCT_MANUFACTURER := Xiaomi
+PRODUCT_MODEL := Mi Max
+TARGET_VENDOR := Xiaomi
 
- # Use the latest approved GMS identifiers unless running a signed build
+PRODUCT_GMS_CLIENTID_BASE := android-xiaomi
+
+# Use the latest approved GMS identifiers unless running a signed build
 ifneq ($(SIGN_BUILD),true)
 PRODUCT_BUILD_PROP_OVERRIDES += \
     TARGET_DEVICE="hydrogen" \
